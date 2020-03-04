@@ -1,0 +1,27 @@
+.background {
+  min-height: 100vh;
+  background-color: #0e2b42;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 300px;
+  padding-bottom: 50px;
+}
+
+.winner-text {
+  color: #00C9FF;
+  font-size: 60px;
+}
+
+.winner-name {
+  color: white;
+  font-size: 100px;
+}
+button {
+  margin-top: 50px;
+  font-size: 25px;
+}
