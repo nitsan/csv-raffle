@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CsvService } from '../csv.service';
 import { names } from '../names';
+import { LocalStorageKeys, LocalStorageService } from '../services/local-storage.service';
+import { AdminForm } from '../models/admin.form.model';
 
 @Component({
   selector: 'app-lottery',
@@ -8,11 +10,12 @@ import { names } from '../names';
   styleUrls: ['./lottery.component.scss']
 })
 export class LotteryComponent {
-  winnerName: string;
-  names;
+  public winnerName = '???? ????';
+  public names: Array<string>;
+  public formData: AdminForm;
 
   constructor(private csvService: CsvService) {
-    this.winnerName = '???? ????';
+    this.formData = LocalStorageService.getItem(LocalStorageKeys.adminForm);
     this.names = names;
   }
 

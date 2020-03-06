@@ -1,4 +1,5 @@
 export const names = [
     'Lionel Messi',
-    'Lluis Suarez'
+    'Luis Suarez',
+    'Jordi Alba'
 ];

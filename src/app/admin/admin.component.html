@@ -1,1 +1,26 @@
-<p>admin works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+    <a class="navbar-brand" routerLink="/admin">Admin</a>
+    <a class="nav-link" href="/">Back to Lottery</a>
+</nav>
+<div class="container">
+    <div class="h2 mb-3">Lottery Settings</div>
+    <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="csvUrl">CSV Url:</label>
+            <input id="csvUrl" type="text" class="form-control" formControlName="csvUrl">
+        </div>
+        <div class="form-group">
+            <label for="iconUrl">Icon Url:</label>
+            <input id="iconUrl" type="text" class="form-control" formControlName="iconUrl">
+        </div>
+        <div class="form-group">
+            <label for="buttonText">Button Text:</label>
+            <input id="buttonText" type="text" class="form-control" formControlName="buttonText">
+        </div>
+        <div class="form-group">
+            <label for="backgroundColor">Background Color:</label>
+            <input id="backgroundColor" type="color" class="form-control" formControlName="backgroundColor">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!adminForm.valid">Save</button>
+    </form>
+</div>
