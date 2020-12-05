@@ -11,15 +11,15 @@ export class AdminComponent implements OnInit {
     public adminForm: FormGroup;
 
     constructor(private fb: FormBuilder) {
-    }
-
-    ngOnInit() {
         this.adminForm = this.fb.group({
             csvUrl: [''],
             iconUrl: [''],
             buttonText: ['Start'],
             backgroundColor: ['#0e2b42'],
         });
+    }
+
+    ngOnInit() {
         if (!LocalStorageService.getItem(LocalStorageKeys.adminForm)) {
             this.saveAdminForm();
         }

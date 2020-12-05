@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+
 export enum LocalStorageKeys {
-  adminForm = 'adminForm'
+    adminForm = 'adminForm'
 }
+
 @Injectable({
     providedIn: 'root'
 })
@@ -15,6 +17,7 @@ export class LocalStorageService {
     }
 
     public static getItem(key: LocalStorageKeys): any {
-        return JSON.parse(localStorage.getItem(key));
+        const localStorageItem = localStorage.getItem(key);
+        return localStorageItem ? JSON.parse(localStorageItem) : null;
     }
 }
