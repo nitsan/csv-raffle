@@ -25,13 +25,13 @@ export class AdminComponent implements OnInit {
         }
     }
 
-    private saveAdminForm() {
-        LocalStorageService.setItem(LocalStorageKeys.adminForm, this.adminForm.value);
-    }
-
     public onSubmit() {
         console.log(this.adminForm.value);
         this.saveAdminForm();
+    }
+
+    private saveAdminForm() {
+        LocalStorageService.setItem(LocalStorageKeys.adminForm, this.adminForm.value);
     }
 
 }
