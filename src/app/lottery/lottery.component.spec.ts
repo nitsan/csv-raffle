@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LotteryComponent } from './lottery.component';
+import { CsvService } from '../csv.service';
 
 describe('LotteryComponent', () => {
   let component: LotteryComponent;
@@ -8,7 +9,13 @@ describe('LotteryComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LotteryComponent ]
+      declarations: [ LotteryComponent ],
+      providers: [
+        {
+          provide: CsvService,
+          useValue: {},
+        }
+      ]
     })
     .compileComponents();
   }));
