@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+// eslint-disable-next-line no-shadow
 export enum LocalStorageKeys {
     adminForm = 'adminForm'
 }
