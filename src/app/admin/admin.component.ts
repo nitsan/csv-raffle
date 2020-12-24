@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LocalStorageKeys, LocalStorageService } from '../services/local-storage.service';
 import { LotteryService } from '../services/lottery.service';
 import { AdminForm } from '../models/admin.form.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -13,7 +14,7 @@ export class AdminComponent {
   public adminForm: FormGroup;
   public file: File | null = null;
 
-  constructor(private fb: FormBuilder, private lotteryService: LotteryService) {
+  constructor(private fb: FormBuilder, private router: Router, private lotteryService: LotteryService) {
     const adminFormData: AdminForm = LocalStorageService.getItem(LocalStorageKeys.adminForm) || {};
     this.adminForm = this.fb.group({
       csvFile: [adminFormData.csvUrl],
@@ -30,12 +31,12 @@ export class AdminComponent {
   public onSubmit() {
     console.log(this.adminForm.value);
     this.saveAdminForm();
+    this.router.navigate(['/']);
   }
 
   private saveAdminForm() {
     LocalStorageService.setItem(LocalStorageKeys.adminForm, this.adminForm.value);
     this.lotteryService.setNames(this.file as Blob);
-
   }
 
 }
