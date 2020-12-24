@@ -1,5 +1,5 @@
 <div class="background" [ngStyle]="{'background-color': formData?.backgroundColor}">
-    <a routerLink="/admin"><img class="logo" src="assets/new-next-logo-white.svg" alt="logo"></a>
+    <a routerLink="/admin"><img class="logo" [src]="logoUrl" alt="logo"></a>
     <div class="winner-text">And the winner is...</div>
     <div class="winner-name">{{winnerName}}</div>
     <button class="btn btn-primary" (click)="random()">{{formData?.buttonText}}</button>

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { CsvService } from '../csv.service';
-import { names } from '../names';
 import { LocalStorageKeys, LocalStorageService } from '../services/local-storage.service';
 import { AdminForm } from '../models/admin.form.model';
+import { LotteryService } from '../services/lottery.service';
 
 @Component({
   selector: 'app-lottery',
@@ -11,17 +10,16 @@ import { AdminForm } from '../models/admin.form.model';
 })
 export class LotteryComponent {
   public winnerName = '???? ????';
-  public names: Array<string>;
-  public formData: AdminForm;
+  public readonly names: Array<string>;
+  public readonly formData: AdminForm;
 
-  constructor(private csvService: CsvService) {
+  constructor(private lotteryService: LotteryService) {
     this.formData = LocalStorageService.getItem(LocalStorageKeys.adminForm);
-    this.names = names;
+    this.names = this.lotteryService.lotteryNames;
   }
 
-  getCsv() {
-    const csv = this.csvService.getCsv();
-    console.log(csv);
+  get logoUrl(): string {
+    return this.formData?.logoUrl || 'assets/new-next-logo-white.svg';
   }
 
   random() {

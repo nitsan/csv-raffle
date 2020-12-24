@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LotteryComponent } from './lottery.component';
-import { CsvService } from '../csv.service';
+import { LotteryService } from '../services/lottery.service';
 
 describe('LotteryComponent', () => {
   let component: LotteryComponent;
@@ -12,7 +12,7 @@ describe('LotteryComponent', () => {
       declarations: [ LotteryComponent ],
       providers: [
         {
-          provide: CsvService,
+          provide: LotteryService,
           useValue: {},
         }
       ]

@@ -1,17 +1,17 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
     <a class="navbar-brand" routerLink="/admin">Admin</a>
-    <a class="nav-link" href="/">Back to Lottery</a>
+    <a class="nav-link" routerLink="">Back to Lottery</a>
 </nav>
 <div class="container">
     <div class="h2 mb-3">Lottery Settings</div>
     <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label for="csvUrl">CSV Url:</label>
-            <input id="csvUrl" type="text" class="form-control" formControlName="csvUrl">
+            <label for="csvFile">CSV File:</label>
+            <input id="csvFile" type="file" class="form-control" formControlName="csvFile" (change)="handleFileInput($event.target)">
         </div>
         <div class="form-group">
-            <label for="iconUrl">Icon Url:</label>
-            <input id="iconUrl" type="text" class="form-control" formControlName="iconUrl">
+            <label for="logoUrl">Icon Url:</label>
+            <input id="logoUrl" type="text" class="form-control" formControlName="logoUrl">
         </div>
         <div class="form-group">
             <label for="buttonText">Button Text:</label>
