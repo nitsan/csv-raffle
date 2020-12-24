@@ -4,6 +4,7 @@ import { LocalStorageKeys, LocalStorageService } from '../services/local-storage
 import { LotteryService } from '../services/lottery.service';
 import { AdminForm } from '../models/admin.form.model';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-admin',
@@ -14,7 +15,8 @@ export class AdminComponent {
   public adminForm: FormGroup;
   public file: File | null = null;
 
-  constructor(private fb: FormBuilder, private router: Router, private lotteryService: LotteryService) {
+  constructor(private fb: FormBuilder, private router: Router, private title: Title, private lotteryService: LotteryService) {
+    this.title.setTitle('Admin Lottery');
     const adminFormData: AdminForm = LocalStorageService.getItem(LocalStorageKeys.adminForm) || {};
     this.adminForm = this.fb.group({
       csvFile: [adminFormData.csvUrl],

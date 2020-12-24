@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LocalStorageKeys, LocalStorageService } from '../services/local-storage.service';
 import { AdminForm } from '../models/admin.form.model';
 import { LotteryService } from '../services/lottery.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lottery',
@@ -13,7 +14,8 @@ export class LotteryComponent {
   public readonly names: Array<string>;
   public readonly formData: AdminForm;
 
-  constructor(private lotteryService: LotteryService) {
+  constructor(private title: Title, private lotteryService: LotteryService) {
+    this.title.setTitle('Lottery!');
     this.formData = LocalStorageService.getItem(LocalStorageKeys.adminForm);
     this.names = this.lotteryService.lotteryNames;
   }
