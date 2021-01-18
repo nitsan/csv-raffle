@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AdminComponent } from './admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -10,7 +11,7 @@ describe('AdminComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AdminComponent ],
-      imports: [ReactiveFormsModule]
+      imports: [ReactiveFormsModule, RouterTestingModule]
     })
     .compileComponents();
   }));
