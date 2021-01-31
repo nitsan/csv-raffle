@@ -8,6 +8,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: npm intsall
+        run: npm i
+
       - name: Serve
         run: npm run start
 
