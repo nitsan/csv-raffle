@@ -7,20 +7,20 @@
     <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="csvFile">CSV File:</label>
-            <input id="csvFile" type="file" class="form-control" formControlName="csvFile" (change)="handleFileInput($event.target)">
+            <input id="csvFile" type="file" class="form-control" formControlName="csvFile" (change)="handleFileInput($event.target)" data-test="csv-file">
         </div>
         <div class="form-group">
             <label for="logoUrl">Icon Url:</label>
-            <input id="logoUrl" type="text" class="form-control" formControlName="logoUrl">
+            <input id="logoUrl" type="text" class="form-control" formControlName="logoUrl" data-test="logo-url">
         </div>
         <div class="form-group">
             <label for="buttonText">Button Text:</label>
-            <input id="buttonText" type="text" class="form-control" formControlName="buttonText">
+            <input id="buttonText" type="text" class="form-control" formControlName="buttonText" data-test="button-text">
         </div>
         <div class="form-group">
             <label for="backgroundColor">Background Color:</label>
-            <input id="backgroundColor" type="color" class="form-control" formControlName="backgroundColor">
+            <input id="backgroundColor" type="color" class="form-control" formControlName="backgroundColor" data-test="background-color">
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!adminForm.valid">Save</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!adminForm.valid" data-test="save-form">Save</button>
     </form>
 </div>

@@ -1,0 +1,8 @@
+{
+  "development": {
+    "baseUrl": "http://localhost:4200"
+  },
+  "production": {
+    "baseUrl": "https://nitsan.github.io/csv-lottery"
+  }
+}
