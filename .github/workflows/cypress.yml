@@ -8,6 +8,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: Serve
+        run: npm run start
+
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
