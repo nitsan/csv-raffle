@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "ng serve",
-    "server:bg": "http-server ./dist/lottery -p4200 > http.log 2>&1 &",
-    "server:lite": "lite-server --baseDir='dist/lottery' -c server-lite.config.json > http.log 2>&1 &",
+    "server:bg": "lite-server --baseDir='dist/lottery' -c server-lite.config.json > http.log 2>&1 &",
     "build": "ng build --prod",
     "build:pages": "ng build --prod --output-path docs --base-href /csv-lottery/",
     "cypress:open": "npx cypress open",
