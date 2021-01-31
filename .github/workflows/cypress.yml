@@ -11,8 +11,11 @@ jobs:
       - name: npm intsall
         run: npm i
 
-      - name: Serve
-        run: npm run start
+      - name: Build
+        run: npm run build
+
+      - name: Start server
+        run: npm run server:bg
 
       - name: Cypress run
         uses: cypress-io/github-action@v2
