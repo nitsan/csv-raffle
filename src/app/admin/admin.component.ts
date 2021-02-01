@@ -30,15 +30,15 @@ export class AdminComponent {
     this.file = target.files.item(0);
   }
 
-  public onSubmit() {
+  public async onSubmit() {
     console.log(this.adminForm.value);
-    this.saveAdminForm();
+    await this.saveAdminForm();
     this.router.navigate(['/']);
   }
 
-  private saveAdminForm() {
+  private async saveAdminForm() {
     LocalStorageService.setItem(LocalStorageKeys.adminForm, this.adminForm.value);
-    this.lotteryService.setNames(this.file as Blob);
+    await this.lotteryService.setNames(this.file as Blob);
   }
 
 }

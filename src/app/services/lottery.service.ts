@@ -11,16 +11,15 @@ export class LotteryService {
         return this._lotteryNames;
     }
 
-    constructor() {
-    }
-
-    public setNames(file: Blob) {
+    public setNames(file: Blob): Promise<void> {
         const reader = new FileReader();
-        reader.onload = () => {
+        return new Promise((resolve => {
+          reader.onload = () => {
             this._lotteryNames = this.getArrayFromText(reader.result as string);
-            console.log(this._lotteryNames);
-        };
-        reader.readAsText(file);
+            resolve();
+          };
+          reader.readAsText(file);
+        }));
     }
 
     private getArrayFromText(text: string): Array<string> {
