@@ -10,7 +10,8 @@
     "cypress:run": "cypress run --record",
     "test": "ng test --browsers=ChromeHeadless --watch=false",
     "test:watch": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "deploy": "npm run build:pages && git add . && git commit -m 'Deploy version' && git push origin master"
   },
   "private": true,
   "dependencies": {
