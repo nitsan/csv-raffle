@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LocalStorageKeys, LocalStorageService } from '../services/local-storage.service';
+import { SessionStorageKeys, SessionStorageService } from '../services/session-storage.service';
 import { AdminForm } from '../models/admin.form.model';
 import { LotteryService } from '../services/lottery.service';
 import { Title } from '@angular/platform-browser';
@@ -16,7 +16,7 @@ export class LotteryComponent {
 
   constructor(private title: Title, private lotteryService: LotteryService) {
     this.title.setTitle('Lottery!');
-    this.formData = LocalStorageService.getItem(LocalStorageKeys.adminForm);
+    this.formData = SessionStorageService.getItem(SessionStorageKeys.adminForm);
     this.names = this.lotteryService.lotteryNames;
   }
 
