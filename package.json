@@ -11,7 +11,7 @@
     "test": "ng test --browsers=ChromeHeadless --watch=false",
     "test:watch": "ng test",
     "lint": "ng lint",
-    "deploy": "npm run build:pages && git add . && git commit -m 'Deploy version' && git push origin master"
+    "deploy": "npm run build:pages && git add . && git commit -m 'Deploy version' && npm version patch && git push origin master"
   },
   "private": true,
   "dependencies": {
