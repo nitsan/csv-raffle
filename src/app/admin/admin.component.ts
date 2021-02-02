@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LocalStorageKeys, LocalStorageService } from '../services/local-storage.service';
+import { SessionStorageKeys, SessionStorageService } from '../services/session-storage.service';
 import { LotteryService } from '../services/lottery.service';
 import { AdminForm } from '../models/admin.form.model';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ export class AdminComponent {
 
   constructor(private fb: FormBuilder, private router: Router, private title: Title, private lotteryService: LotteryService) {
     this.title.setTitle('Admin Lottery');
-    const adminFormData: AdminForm = LocalStorageService.getItem(LocalStorageKeys.adminForm) || {};
+    const adminFormData: AdminForm = SessionStorageService.getItem(SessionStorageKeys.adminForm) || {};
     this.adminForm = this.fb.group({
       csvFile: [adminFormData.csvUrl],
       logoUrl: [adminFormData.logoUrl],
@@ -37,7 +37,7 @@ export class AdminComponent {
   }
 
   private async saveAdminForm() {
-    LocalStorageService.setItem(LocalStorageKeys.adminForm, this.adminForm.value);
+    SessionStorageService.setItem(SessionStorageKeys.adminForm, this.adminForm.value);
     await this.lotteryService.setNames(this.file as Blob);
   }
 

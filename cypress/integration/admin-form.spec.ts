@@ -5,7 +5,7 @@ import { LotteryPageSelector } from '../src/lottery-page/lottery-page.selectors'
 describe('Admin form', () => {
   beforeEach(() => {
     cy.window().then((window) => {
-      window.localStorage.clear();
+      window.sessionStorage.clear();
     });
     cy.visit('/admin');
     AdminFrom.fillAdminForm('form.json');
