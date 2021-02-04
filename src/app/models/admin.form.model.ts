@@ -1,5 +1,5 @@
 export interface AdminForm {
-  csvUrl: string;
+  csvFile: string;
   logoUrl: string;
   buttonText: string;
   backgroundColor: string;
