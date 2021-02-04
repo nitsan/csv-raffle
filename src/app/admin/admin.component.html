@@ -8,6 +8,7 @@
         <div class="form-group">
             <label for="csvFile">CSV File:</label>
             <input id="csvFile" type="file" class="form-control" formControlName="csvFile" (change)="handleFileInput($event.target)" data-test="csv-file">
+          <div *ngIf="!!totalNames">Total names loaded: {{totalNames}}</div>
         </div>
         <div class="form-group">
             <label for="logoUrl">Icon Url:</label>
@@ -21,6 +22,6 @@
             <label for="backgroundColor">Background Color:</label>
             <input id="backgroundColor" type="color" class="form-control" formControlName="backgroundColor" data-test="background-color">
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!adminForm.valid" data-test="save-form">Save</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!adminForm.valid || isSaveLoading" data-test="save-form">Save</button>
     </form>
 </div>

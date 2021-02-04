@@ -16,7 +16,7 @@ export class LotteryComponent {
 
   constructor(private title: Title, private lotteryService: LotteryService) {
     this.title.setTitle('Lottery!');
-    this.formData = SessionStorageService.getItem(SessionStorageKeys.adminForm);
+    this.formData = SessionStorageService.getItem(SessionStorageKeys.AdminForm);
     this.names = this.lotteryService.lotteryNames;
   }
 
