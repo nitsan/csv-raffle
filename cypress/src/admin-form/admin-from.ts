@@ -6,7 +6,7 @@ export class AdminFrom {
   static fillAdminForm(fixturePath: string) {
     cy.fixture(fixturePath).then((adminForm: AdminForm) => {
       cy.get(AdminFormSelector.CSVFile)
-        .attachFile(adminForm.csvUrl);
+        .attachFile(adminForm.csvFile);
       cy.get(AdminFormSelector.IconUrlInput).clear().type(adminForm.logoUrl);
       cy.get(AdminFormSelector.ButtonText).clear().type(adminForm.buttonText);
       cy.get(AdminFormSelector.BackgroundColor).type(adminForm.backgroundColor);

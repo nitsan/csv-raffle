@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 
 // eslint-disable-next-line no-shadow
 export enum SessionStorageKeys {
-    adminForm = 'adminForm'
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  AdminForm = 'AdminForm',
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  AllNames = 'totalNames',
 }
 
 @Injectable({

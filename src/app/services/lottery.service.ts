@@ -11,6 +11,10 @@ export class LotteryService {
         return this._lotteryNames;
     }
 
+    set lotteryNames(value: Array<string>) {
+      this._lotteryNames = value;
+    }
+
     public setNames(file: Blob): Promise<void> {
         const reader = new FileReader();
         return new Promise((resolve => {

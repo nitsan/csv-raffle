@@ -14,31 +14,43 @@ import { Title } from '@angular/platform-browser';
 export class AdminComponent {
   public adminForm: FormGroup;
   public file: File | null = null;
+  public isSaveLoading = false;
+  public totalNames = 0;
 
   constructor(private fb: FormBuilder, private router: Router, private title: Title, private lotteryService: LotteryService) {
     this.title.setTitle('Admin Lottery');
-    const adminFormData: AdminForm = SessionStorageService.getItem(SessionStorageKeys.adminForm) || {};
+    this.initLotteryNames();
+    const adminFormData: AdminForm = SessionStorageService.getItem(SessionStorageKeys.AdminForm) || {};
     this.adminForm = this.fb.group({
-      csvFile: [adminFormData.csvUrl],
+      csvFile: [],
       logoUrl: [adminFormData.logoUrl],
       buttonText: [adminFormData.buttonText || 'Start', Validators.required],
       backgroundColor: [adminFormData.backgroundColor || '#0e2b42'],
     });
   }
 
-  handleFileInput(target: any) {
+  async handleFileInput(target: any) {
+    this.isSaveLoading = true;
     this.file = target.files.item(0);
+    await this.lotteryService.setNames(this.file as Blob);
+    const lotteryNames = this.lotteryService.lotteryNames;
+    this.totalNames = lotteryNames.length - 1;
+    SessionStorageService.setItem(SessionStorageKeys.AllNames, lotteryNames);
+    this.isSaveLoading = false;
   }
 
-  public async onSubmit() {
+  public onSubmit() {
     console.log(this.adminForm.value);
-    await this.saveAdminForm();
+    SessionStorageService.setItem(SessionStorageKeys.AdminForm, this.adminForm.value);
     this.router.navigate(['/']);
   }
 
-  private async saveAdminForm() {
-    SessionStorageService.setItem(SessionStorageKeys.adminForm, this.adminForm.value);
-    await this.lotteryService.setNames(this.file as Blob);
+  private initLotteryNames(): void {
+    const lotteryNames = SessionStorageService.getItem(SessionStorageKeys.AllNames);
+    if (lotteryNames) {
+      this.totalNames = lotteryNames.length - 1;
+      this.lotteryService.lotteryNames = lotteryNames;
+    }
   }
 
 }
