@@ -1,0 +1,72 @@
+Index: src/app/admin/admin.component.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { Component } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\nimport { SessionStorageKeys, SessionStorageService } from '../services/session-storage.service';\nimport { LotteryService } from '../services/lottery.service';\nimport { AdminForm } from '../models/admin.form.model';\nimport { Router } from '@angular/router';\nimport { Title } from '@angular/platform-browser';\n\n@Component({\n  selector: 'app-admin',\n  templateUrl: './admin.component.html',\n  styleUrls: ['./admin.component.scss']\n})\nexport class AdminComponent {\n  public adminForm: FormGroup;\n  public file: File | null = null;\n\n  constructor(private fb: FormBuilder, private router: Router, private title: Title, private lotteryService: LotteryService) {\n    this.title.setTitle('Admin Lottery');\n    const adminFormData: AdminForm = SessionStorageService.getItem(SessionStorageKeys.adminForm) || {};\n    this.adminForm = this.fb.group({\n      csvFile: [adminFormData.csvUrl],\n      logoUrl: [adminFormData.logoUrl],\n      buttonText: [adminFormData.buttonText || 'Start', Validators.required],\n      backgroundColor: [adminFormData.backgroundColor || '#0e2b42'],\n    });\n  }\n\n  handleFileInput(target: any) {\n    this.file = target.files.item(0);\n  }\n\n  public async onSubmit() {\n    console.log(this.adminForm.value);\n    await this.saveAdminForm();\n    this.router.navigate(['/']);\n  }\n\n  private async saveAdminForm() {\n    SessionStorageService.setItem(SessionStorageKeys.adminForm, this.adminForm.value);\n    await this.lotteryService.setNames(this.file as Blob);\n  }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/app/admin/admin.component.ts b/src/app/admin/admin.component.ts
+--- a/src/app/admin/admin.component.ts	(revision d072e546185a7ccb6bc2ef46d413d642b266115d)
++++ b/src/app/admin/admin.component.ts	(date 1612303316424)
+@@ -19,7 +19,7 @@
+     this.title.setTitle('Admin Lottery');
+     const adminFormData: AdminForm = SessionStorageService.getItem(SessionStorageKeys.adminForm) || {};
+     this.adminForm = this.fb.group({
+-      csvFile: [adminFormData.csvUrl],
++      csvFile: [adminFormData.csvFile],
+       logoUrl: [adminFormData.logoUrl],
+       buttonText: [adminFormData.buttonText || 'Start', Validators.required],
+       backgroundColor: [adminFormData.backgroundColor || '#0e2b42'],
+Index: cypress/src/admin-form/admin-from.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { AdminFormSelector } from './admin-form.selector';\nimport { AdminForm } from '../../../src/app/models/admin.form.model';\nimport { AppUrl } from '../core/url.enum';\n\nexport class AdminFrom {\n  static fillAdminForm(fixturePath: string) {\n    cy.fixture(fixturePath).then((adminForm: AdminForm) => {\n      cy.get(AdminFormSelector.CSVFile)\n        .attachFile(adminForm.csvUrl);\n      cy.get(AdminFormSelector.IconUrlInput).clear().type(adminForm.logoUrl);\n      cy.get(AdminFormSelector.ButtonText).clear().type(adminForm.buttonText);\n      cy.get(AdminFormSelector.BackgroundColor).type(adminForm.backgroundColor);\n    });\n  }\n\n  static saveAdminForm() {\n    cy.get(AdminFormSelector.SaveFormBtn).click();\n    cy.url().should('eq', Cypress.config().baseUrl + AppUrl.Lottery);\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cypress/src/admin-form/admin-from.ts b/cypress/src/admin-form/admin-from.ts
+--- a/cypress/src/admin-form/admin-from.ts	(revision d072e546185a7ccb6bc2ef46d413d642b266115d)
++++ b/cypress/src/admin-form/admin-from.ts	(date 1612303316429)
+@@ -6,7 +6,7 @@
+   static fillAdminForm(fixturePath: string) {
+     cy.fixture(fixturePath).then((adminForm: AdminForm) => {
+       cy.get(AdminFormSelector.CSVFile)
+-        .attachFile(adminForm.csvUrl);
++        .attachFile(adminForm.csvFile);
+       cy.get(AdminFormSelector.IconUrlInput).clear().type(adminForm.logoUrl);
+       cy.get(AdminFormSelector.ButtonText).clear().type(adminForm.buttonText);
+       cy.get(AdminFormSelector.BackgroundColor).type(adminForm.backgroundColor);
+Index: cypress/fixtures/form.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"csvUrl\": \"list.csv\",\n  \"logoUrl\": \"assets/angular-il.jpeg\",\n  \"buttonText\": \"Go\",\n  \"backgroundColor\": \"#04c38e\"\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cypress/fixtures/form.json b/cypress/fixtures/form.json
+--- a/cypress/fixtures/form.json	(revision d072e546185a7ccb6bc2ef46d413d642b266115d)
++++ b/cypress/fixtures/form.json	(date 1612303316432)
+@@ -1,5 +1,5 @@
+ {
+-  "csvUrl": "list.csv",
++  "csvFile": "list.csv",
+   "logoUrl": "assets/angular-il.jpeg",
+   "buttonText": "Go",
+   "backgroundColor": "#04c38e"
+Index: src/app/models/admin.form.model.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>export interface AdminForm {\n  csvUrl: string;\n  logoUrl: string;\n  buttonText: string;\n  backgroundColor: string;\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/app/models/admin.form.model.ts b/src/app/models/admin.form.model.ts
+--- a/src/app/models/admin.form.model.ts	(revision d072e546185a7ccb6bc2ef46d413d642b266115d)
++++ b/src/app/models/admin.form.model.ts	(date 1612303316427)
+@@ -1,5 +1,5 @@
+ export interface AdminForm {
+-  csvUrl: string;
++  csvFile: string;
+   logoUrl: string;
+   buttonText: string;
+   backgroundColor: string;
