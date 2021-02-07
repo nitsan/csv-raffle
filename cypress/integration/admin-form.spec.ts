@@ -12,7 +12,7 @@ describe('Admin form', () => {
   });
 
   it('should change icon', () => {
-    const logoUrl = 'assets/new-next-logo-white.svg';
+    const logoUrl = 'assets/angular-il.jpeg';
     cy.get(AdminFormSelector.IconUrlInput).clear()
       .type(logoUrl)
       .should('have.value', logoUrl);
