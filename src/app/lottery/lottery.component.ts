@@ -21,7 +21,7 @@ export class LotteryComponent {
   }
 
   get logoUrl(): string {
-    return this.formData?.logoUrl || 'assets/new-next-logo-white.svg';
+    return this.formData?.logoUrl || 'assets/angular-il.jpeg';
   }
 
   random() {
