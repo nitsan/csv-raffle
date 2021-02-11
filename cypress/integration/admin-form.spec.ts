@@ -7,24 +7,20 @@ describe('Admin form', () => {
     cy.window().then((window) => {
       window.sessionStorage.clear();
     });
-    cy.visit('/admin');
-    AdminFormPage.fillAdminForm('form.json');
+    cy.visit('/');
+    AdminFormPage.fillAdminFormMandatory('form.json');
   });
 
   it('should change icon', () => {
-    const logoUrl = 'assets/angular-il.jpeg';
-    cy.get(AdminFormSelector.IconUrlInput).clear()
-      .type(logoUrl)
-      .should('have.value', logoUrl);
+    const logoUrl = 'assets/favicon.png';
+    AdminFormPage.fillInput(AdminFormSelector.IconUrlInput, logoUrl);
     AdminFormPage.saveAdminForm();
     cy.get(LotteryPageSelector.ImageLogo).should('have.attr', 'src', logoUrl);
   });
 
   it('should change button text', () => {
     const newText = 'Yalla';
-    cy.get(AdminFormSelector.ButtonText).clear()
-      .type(newText)
-      .should('have.value', newText);
+    AdminFormPage.fillInput(AdminFormSelector.ButtonText, newText);
     AdminFormPage.saveAdminForm();
     cy.get(LotteryPageSelector.StartLotteryBtn).contains(newText);
   });
