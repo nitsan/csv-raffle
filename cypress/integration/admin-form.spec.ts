@@ -1,5 +1,5 @@
 import { AdminFormSelector } from '../src/admin-form/admin-form.selector';
-import { AdminFrom } from '../src/admin-form/admin-from';
+import { AdminFormPage } from '../src/admin-form/admin-form-page';
 import { LotteryPageSelector } from '../src/lottery-page/lottery-page.selectors';
 
 describe('Admin form', () => {
@@ -8,7 +8,7 @@ describe('Admin form', () => {
       window.sessionStorage.clear();
     });
     cy.visit('/admin');
-    AdminFrom.fillAdminForm('form.json');
+    AdminFormPage.fillAdminForm('form.json');
   });
 
   it('should change icon', () => {
@@ -16,7 +16,7 @@ describe('Admin form', () => {
     cy.get(AdminFormSelector.IconUrlInput).clear()
       .type(logoUrl)
       .should('have.value', logoUrl);
-    AdminFrom.saveAdminForm();
+    AdminFormPage.saveAdminForm();
     cy.get(LotteryPageSelector.ImageLogo).should('have.attr', 'src', logoUrl);
   });
 
@@ -25,7 +25,7 @@ describe('Admin form', () => {
     cy.get(AdminFormSelector.ButtonText).clear()
       .type(newText)
       .should('have.value', newText);
-    AdminFrom.saveAdminForm();
+    AdminFormPage.saveAdminForm();
     cy.get(LotteryPageSelector.StartLotteryBtn).contains(newText);
   });
 
@@ -35,7 +35,7 @@ describe('Admin form', () => {
       .invoke('val', newColor)
       .trigger('input')
       .should('have.value', newColor);
-    AdminFrom.saveAdminForm();
+    AdminFormPage.saveAdminForm();
     cy.get(LotteryPageSelector.LotteryBackground).should('have.css', 'background-color', 'rgb(84, 20, 42)');
   });
 });
