@@ -3,14 +3,17 @@ import { AdminForm } from '../../../src/app/models/admin.form.model';
 import { AppUrl } from '../core/url.enum';
 
 export class AdminFormPage {
-  static fillAdminForm(fixturePath: string) {
+  static fillAdminFormMandatory(fixturePath: string) {
     cy.fixture(fixturePath).then((adminForm: AdminForm) => {
       cy.get(AdminFormSelector.CSVFile)
         .attachFile(adminForm.csvFile);
-      cy.get(AdminFormSelector.IconUrlInput).clear().type(adminForm.logoUrl);
-      cy.get(AdminFormSelector.ButtonText).clear().type(adminForm.buttonText);
-      cy.get(AdminFormSelector.BackgroundColor).type(adminForm.backgroundColor);
     });
+  }
+
+  static fillInput(selector: AdminFormSelector, value: string) {
+    cy.get(selector).clear()
+      .type(value)
+      .should('have.value', value);
   }
 
   static saveAdminForm() {
