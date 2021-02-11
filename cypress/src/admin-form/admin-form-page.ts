@@ -2,7 +2,7 @@ import { AdminFormSelector } from './admin-form.selector';
 import { AdminForm } from '../../../src/app/models/admin.form.model';
 import { AppUrl } from '../core/url.enum';
 
-export class AdminFrom {
+export class AdminFormPage {
   static fillAdminForm(fixturePath: string) {
     cy.fixture(fixturePath).then((adminForm: AdminForm) => {
       cy.get(AdminFormSelector.CSVFile)
