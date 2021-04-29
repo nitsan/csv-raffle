@@ -1,0 +1,50 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: sunday
+  ignore:
+  - dependency-name: "@angular-devkit/build-angular"
+    versions:
+    - 0.1101.2
+    - 0.1102.0
+    - 0.1102.1
+    - 0.1102.10
+    - 0.1102.2
+    - 0.1102.3
+    - 0.1102.4
+    - 0.1102.5
+    - 0.1102.6
+    - 0.1102.7
+    - 0.1102.8
+  - dependency-name: "@types/node"
+    versions:
+    - 14.14.27
+    - 14.14.31
+    - 14.14.34
+    - 14.14.35
+    - 14.14.37
+    - 14.14.41
+  - dependency-name: eslint
+    versions:
+    - 7.20.0
+    - 7.21.0
+    - 7.22.0
+    - 7.23.0
+    - 7.24.0
+  - dependency-name: zone.js
+    versions:
+    - 0.11.3
+  - dependency-name: "@angular/cli"
+    versions:
+    - 11.1.2
+    - 11.1.4
+  - dependency-name: "@angular/language-service"
+    versions:
+    - 11.1.1
+    - 11.1.2
+  - dependency-name: typescript
+    versions:
+    - 4.1.3
