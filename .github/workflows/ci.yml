@@ -16,9 +16,6 @@ jobs:
 
       - name: lint
         run: npm run lint
-
-      - name: lint
-        run: npm run lint
   unit-tests:
     name: Unit-tests
     runs-on: ubuntu-latest
