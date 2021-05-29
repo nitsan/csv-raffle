@@ -4,14 +4,14 @@
   "scripts": {
     "start": "ng serve",
     "server:bg": "lite-server --baseDir='dist/lottery' -c server-lite.config.json > http.log 2>&1 &",
-    "build": "ng build --prod",
-    "build:pages": "ng build --prod --output-path docs --base-href /csv-lottery/",
+    "build": "ng build --configuration production",
+    "build:pages": "ng build --configuration production --output-path docs --base-href /csv-lottery/",
     "cypress:open": "npx cypress open",
     "cypress:run": "cypress run --record",
     "test": "ng test --browsers=ChromeHeadless --watch=false",
     "test:watch": "ng test",
     "lint": "ng lint",
-    "deploy": "npm run build:pages && git add -A && git commit -m 'Deploy version' && npm version patch && git push origin master"
+    "deploy": "npm run build:pages && git add -A && git commit -m \"Deploy version\" && npm version patch && git push origin master"
   },
   "private": true,
   "dependencies": {
