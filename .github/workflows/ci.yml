@@ -1,31 +1,17 @@
-name: CI
+name: Receive PR
 
 on: pull_request
 
 jobs:
-  lint:
-    name: Lint
+  cache:
+    name: npm cache
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: npm intsall
-        run: npm i
-
-      - name: lint
-        run: npm run lint
-  unit-tests:
-    name: Unit-tests
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: npm intsall
-        run: npm i
-
-      - name: unit-tests
-        run: npm run test
+      - name: npm cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
