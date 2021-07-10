@@ -26,4 +26,6 @@ jobs:
 
       - name: Deploy
         if: contains(env.GITHUB_COMMIT_MESSAGE, 'Deploy version') == false
-        run: npm run deploy
+        run: |
+          npm version patch -m "ci: version bump to v%s"
+          git push origin master
