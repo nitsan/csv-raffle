@@ -12,6 +12,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Get email
+        if: contains(env.GITHUB_COMMIT_MESSAGE, 'version bump') == false
         run: echo GITHUB_EMAIL=$(git --no-pager show -s --format=\'%ae\') >> $GITHUB_ENV
 
       - name: Setup GIT
@@ -24,8 +25,12 @@ jobs:
       - name: npm intsall
         run: npm i
 
+      - name: Build
+        run: |
+          npm run build:pages
+          git add -A
+
       - name: Deploy
-        if: contains(env.GITHUB_COMMIT_MESSAGE, 'Deploy version') == false
         run: |
           npm version patch -m "ci: version bump to v%s"
           git push origin master
