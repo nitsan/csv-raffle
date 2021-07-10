@@ -1,9 +1,10 @@
 name: Cypress tests
 on:
   workflow_run:
-    workflows: ["Unit-tests"]
+    workflows: ["CI"]
     types:
       - completed
+      - requested
 
 jobs:
   cypress-run:
