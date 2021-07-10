@@ -11,6 +11,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Get email
+        run: echo GITHUB_EMAIL=$(git --no-pager show -s --format=\'%ae\') >> $GITHUB_ENV
+
+      - name: Setup GIT
+        run: |
+          echo "Setting email to: ${GITHUB_EMAIL}"
+          echo "Setting user to: ${GITHUB_ACTOR}"
+          git config user.email "$GITHUB_EMAIL"
+          git config user.name "$GITHUB_ACTOR"
+
       - name: npm intsall
         run: npm i
 
