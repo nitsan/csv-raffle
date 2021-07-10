@@ -1,5 +1,8 @@
 name: Cypress tests
-on: [pull_request]
+on:
+  workflow_run:
+    workflows: ["unit-tests"]
+
 jobs:
   cypress-run:
     name: Cypress run
