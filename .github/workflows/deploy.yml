@@ -11,6 +11,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: npm intsall
+        run: npm i
+
       - name: Deploy
         if: contains(env.GITHUB_COMMIT_MESSAGE, 'Deploy version') == false
         run: npm run deploy
