@@ -1,0 +1,16 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy
+        if: contains(env.GITHUB_COMMIT_MESSAGE, 'Deploy version') == false
+        run: npm run deploy
