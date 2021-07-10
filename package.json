@@ -1,6 +1,6 @@
 {
   "name": "lottery",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "scripts": {
     "start": "ng serve",
     "server:bg": "lite-server --baseDir='dist/lottery' -c server-lite.config.json > http.log 2>&1 &",
