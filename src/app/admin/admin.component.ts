@@ -18,7 +18,7 @@ export class AdminComponent {
   public totalNames = 0;
 
   constructor(private fb: FormBuilder, private router: Router, private title: Title, private lotteryService: LotteryService) {
-    this.title.setTitle('Admin Lottery');
+    this.title.setTitle('Admin Raffle');
     this.initLotteryNames();
     const adminFormData: AdminForm = SessionStorageService.getItem(SessionStorageKeys.AdminForm) || {};
     this.adminForm = this.fb.group({
