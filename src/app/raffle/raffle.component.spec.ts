@@ -1,15 +1,15 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { LotteryComponent } from './lottery.component';
+import { RaffleComponent } from './raffle.component';
 import { LotteryService } from '../services/lottery.service';
 
-describe('LotteryComponent', () => {
-  let component: LotteryComponent;
-  let fixture: ComponentFixture<LotteryComponent>;
+describe('RaffleComponent', () => {
+  let component: RaffleComponent;
+  let fixture: ComponentFixture<RaffleComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LotteryComponent ],
+      declarations: [ RaffleComponent ],
       providers: [
         {
           provide: LotteryService,
@@ -21,7 +21,7 @@ describe('LotteryComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LotteryComponent);
+    fixture = TestBed.createComponent(RaffleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

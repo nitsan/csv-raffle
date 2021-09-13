@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
-import { LotteryComponent } from './lottery/lottery.component';
+import { RaffleComponent } from './raffle/raffle.component';
 import { LotteryGuard } from './lottery.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: LotteryComponent,
+    component: RaffleComponent,
     canActivate: [LotteryGuard],
   },
   {
     path: 'admin',
     component: AdminComponent,
   },
-  { path: '**', component: LotteryComponent }
+  { path: '**', component: RaffleComponent }
 ];
 
 @NgModule({
