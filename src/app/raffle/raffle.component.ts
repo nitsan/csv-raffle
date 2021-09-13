@@ -6,10 +6,10 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-lottery',
-  templateUrl: './lottery.component.html',
-  styleUrls: ['./lottery.component.scss']
+  templateUrl: './raffle.component.html',
+  styleUrls: ['./raffle.component.scss']
 })
-export class LotteryComponent {
+export class RaffleComponent {
   public winnerName = '???? ????';
   public readonly names: Array<string>;
   public readonly formData: AdminForm;
