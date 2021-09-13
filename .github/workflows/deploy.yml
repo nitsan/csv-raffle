@@ -22,14 +22,17 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
 
       - name: npm intsall
-        run: npm i
+        run: npm ci
 
       - name: Build
-        run: |
-          npm run build:pages
+        run: npm run build:pages
 
       - name: Deploy
         run: |
           git add -A
+          git push origin master
+
+      - name: Version bump
+        run: |
           npm version patch -m "ci: version bump to v%s"
           git push origin master
