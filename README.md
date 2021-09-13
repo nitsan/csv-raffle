@@ -1,6 +1,6 @@
-# csv-lottery
-Lottery for csv file
+# csv-raffle
+Raffle for csv file
 
-Go to https://nitsan.github.io/csv-lottery/
+Go to https://nitsan.github.io/csv-raffle/
 
 For admin click on the logo

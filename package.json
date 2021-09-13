@@ -5,7 +5,7 @@
     "start": "ng serve",
     "server:bg": "lite-server --baseDir='dist/lottery' -c server-lite.config.json > http.log 2>&1 &",
     "build": "ng build --configuration production",
-    "build:pages": "ng build --configuration production --output-path docs --base-href /csv-lottery/",
+    "build:pages": "ng build --configuration production --output-path docs --base-href /csv-raffle/",
     "cypress:open": "npx cypress open",
     "cypress:run": "cypress run --record",
     "test": "ng test --browsers=ChromeHeadless --watch=false",
