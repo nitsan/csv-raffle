@@ -18,6 +18,6 @@ export class AdminFormPage {
 
   static saveAdminForm() {
     cy.get(AdminFormSelector.SaveFormBtn).click();
-    cy.url().should('eq', Cypress.config().baseUrl + AppUrl.Lottery);
+    cy.url().should('eq', Cypress.config().baseUrl + AppUrl.Home);
   }
 }

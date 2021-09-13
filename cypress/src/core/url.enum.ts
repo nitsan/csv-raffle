@@ -1,4 +1,4 @@
 export enum AppUrl {
-  Lottery = '/',
+  Home = '/',
   AdminForm = '/admin'
 }

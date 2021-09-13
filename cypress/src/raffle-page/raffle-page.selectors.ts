@@ -1,5 +1,5 @@
 export enum RafflePageSelector {
-  StartLotteryBtn = '[data-test=start-lottery-btn]',
+  StartRaffleBtn = '[data-test=start-raffle-btn]',
   ImageLogo = '[data-test=image-logo]',
-  LotteryBackground = '[data-test=lottery-background]',
+  raffleBackground = '[data-test=raffle-background]',
 }

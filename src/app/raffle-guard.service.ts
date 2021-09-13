@@ -11,7 +11,7 @@ export class RaffleGuard implements CanActivate {
   }
 
   canActivate(): boolean {
-    if (this.raffleService.lotteryNames?.length) {
+    if (this.raffleService.raffleNames?.length) {
       return true;
     } else {
       this.router.navigate(['/admin']);
