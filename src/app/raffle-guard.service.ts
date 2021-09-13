@@ -5,7 +5,7 @@ import { RaffleService } from './services/raffle.service';
 @Injectable({
   providedIn: 'root'
 })
-export class LotteryGuard implements CanActivate {
+export class RaffleGuard implements CanActivate {
 
   constructor(private router: Router, private raffleService: RaffleService) {
   }
