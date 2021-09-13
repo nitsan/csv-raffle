@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: npm intsall
-        run: npm i
+        run: npm ci --prefer-offline --no-audit
 
       - name: Build
         run: npm run build

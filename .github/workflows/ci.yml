@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: npm intsall
-        run: npm ci
+        run: npm ci --prefer-offline --no-audit
 
       - name: lint
         run: npm run lint
@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: npm intsall
-        run: npm ci
+        run: npm ci --prefer-offline --no-audit
 
       - name: unit-tests
         run: npm run test
