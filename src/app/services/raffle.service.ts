@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
     providedIn: 'root'
 })
-export class LotteryService {
+export class RaffleService {
     private _lotteryNames: Array<string> = [];
 
     get lotteryNames(): Array<string> {

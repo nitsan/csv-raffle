@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SessionStorageKeys, SessionStorageService } from '../services/session-storage.service';
 import { AdminForm } from '../models/admin.form.model';
-import { LotteryService } from '../services/lottery.service';
+import { RaffleService } from '../services/raffle.service';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -14,10 +14,10 @@ export class RaffleComponent {
   public readonly names: Array<string>;
   public readonly formData: AdminForm;
 
-  constructor(private title: Title, private lotteryService: LotteryService) {
+  constructor(private title: Title, private raffleService: RaffleService) {
     this.title.setTitle('Raffle!');
     this.formData = SessionStorageService.getItem(SessionStorageKeys.AdminForm);
-    this.names = this.lotteryService.lotteryNames;
+    this.names = this.raffleService.lotteryNames;
   }
 
   get logoUrl(): string {
