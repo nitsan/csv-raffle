@@ -30,6 +30,7 @@ jobs:
       - name: Deploy
         run: |
           git add -A
+          git commit -m "add build files"
           git push origin master
 
       - name: Version bump
