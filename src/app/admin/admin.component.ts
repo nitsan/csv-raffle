@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SessionStorageKeys, SessionStorageService } from '../services/session-storage.service';
-import { LotteryService } from '../services/lottery.service';
+import { RaffleService } from '../services/raffle.service';
 import { AdminForm } from '../models/admin.form.model';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -17,7 +17,7 @@ export class AdminComponent {
   public isSaveLoading = false;
   public totalNames = 0;
 
-  constructor(private fb: FormBuilder, private router: Router, private title: Title, private lotteryService: LotteryService) {
+  constructor(private fb: FormBuilder, private router: Router, private title: Title, private raffleService: RaffleService) {
     this.title.setTitle('Admin Raffle');
     this.initLotteryNames();
     const adminFormData: AdminForm = SessionStorageService.getItem(SessionStorageKeys.AdminForm) || {};
@@ -32,8 +32,8 @@ export class AdminComponent {
   async handleFileInput(target: any) {
     this.isSaveLoading = true;
     this.file = target.files.item(0);
-    await this.lotteryService.setNames(this.file as Blob);
-    const lotteryNames = this.lotteryService.lotteryNames;
+    await this.raffleService.setNames(this.file as Blob);
+    const lotteryNames = this.raffleService.lotteryNames;
     this.totalNames = lotteryNames.length - 1;
     SessionStorageService.setItem(SessionStorageKeys.AllNames, lotteryNames);
     this.isSaveLoading = false;
@@ -49,7 +49,7 @@ export class AdminComponent {
     const lotteryNames = SessionStorageService.getItem(SessionStorageKeys.AllNames);
     if (lotteryNames) {
       this.totalNames = lotteryNames.length - 1;
-      this.lotteryService.lotteryNames = lotteryNames;
+      this.raffleService.lotteryNames = lotteryNames;
     }
   }
 

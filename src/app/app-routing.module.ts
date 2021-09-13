@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { RaffleComponent } from './raffle/raffle.component';
-import { LotteryGuard } from './lottery.guard';
+import { RaffleGuard } from './raffle-guard.service';
 
 const routes: Routes = [
   {
     path: '',
     component: RaffleComponent,
-    canActivate: [LotteryGuard],
+    canActivate: [RaffleGuard],
   },
   {
     path: 'admin',

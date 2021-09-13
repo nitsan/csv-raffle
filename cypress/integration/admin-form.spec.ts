@@ -1,6 +1,6 @@
 import { AdminFormSelector } from '../src/admin-form/admin-form.selector';
 import { AdminFormPage } from '../src/admin-form/admin-form-page';
-import { LotteryPageSelector } from '../src/lottery-page/lottery-page.selectors';
+import { RafflePageSelector } from '../src/raffle-page/raffle-page.selectors';
 
 describe('Admin form', () => {
   beforeEach(() => {
@@ -15,14 +15,14 @@ describe('Admin form', () => {
     const logoUrl = 'assets/favicon.png';
     AdminFormPage.fillInput(AdminFormSelector.IconUrlInput, logoUrl);
     AdminFormPage.saveAdminForm();
-    cy.get(LotteryPageSelector.ImageLogo).should('have.attr', 'src', logoUrl);
+    cy.get(RafflePageSelector.ImageLogo).should('have.attr', 'src', logoUrl);
   });
 
   it('should change button text', () => {
     const newText = 'Yalla';
     AdminFormPage.fillInput(AdminFormSelector.ButtonText, newText);
     AdminFormPage.saveAdminForm();
-    cy.get(LotteryPageSelector.StartLotteryBtn).contains(newText);
+    cy.get(RafflePageSelector.StartLotteryBtn).contains(newText);
   });
 
   it('should change background color', () => {
@@ -32,6 +32,6 @@ describe('Admin form', () => {
       .trigger('input')
       .should('have.value', newColor);
     AdminFormPage.saveAdminForm();
-    cy.get(LotteryPageSelector.LotteryBackground).should('have.css', 'background-color', 'rgb(84, 20, 42)');
+    cy.get(RafflePageSelector.LotteryBackground).should('have.css', 'background-color', 'rgb(84, 20, 42)');
   });
 });
