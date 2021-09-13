@@ -19,7 +19,7 @@ export class AdminComponent {
 
   constructor(private fb: FormBuilder, private router: Router, private title: Title, private raffleService: RaffleService) {
     this.title.setTitle('Admin Raffle');
-    this.initLotteryNames();
+    this.initRaffleNames();
     const adminFormData: AdminForm = SessionStorageService.getItem(SessionStorageKeys.AdminForm) || {};
     this.adminForm = this.fb.group({
       csvFile: [],
@@ -33,9 +33,9 @@ export class AdminComponent {
     this.isSaveLoading = true;
     this.file = target.files.item(0);
     await this.raffleService.setNames(this.file as Blob);
-    const lotteryNames = this.raffleService.lotteryNames;
-    this.totalNames = lotteryNames.length - 1;
-    SessionStorageService.setItem(SessionStorageKeys.AllNames, lotteryNames);
+    const raffleNames = this.raffleService.raffleNames;
+    this.totalNames = raffleNames.length - 1;
+    SessionStorageService.setItem(SessionStorageKeys.AllNames, raffleNames);
     this.isSaveLoading = false;
   }
 
@@ -45,11 +45,11 @@ export class AdminComponent {
     this.router.navigate(['/']);
   }
 
-  private initLotteryNames(): void {
-    const lotteryNames = SessionStorageService.getItem(SessionStorageKeys.AllNames);
-    if (lotteryNames) {
-      this.totalNames = lotteryNames.length - 1;
-      this.raffleService.lotteryNames = lotteryNames;
+  private initRaffleNames(): void {
+    const raffleNames = SessionStorageService.getItem(SessionStorageKeys.AllNames);
+    if (raffleNames) {
+      this.totalNames = raffleNames.length - 1;
+      this.raffleService.raffleNames = raffleNames;
     }
   }
 

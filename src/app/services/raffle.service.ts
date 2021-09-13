@@ -5,21 +5,21 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class RaffleService {
-    private _lotteryNames: Array<string> = [];
+    private _raffleNames: Array<string> = [];
 
-    get lotteryNames(): Array<string> {
-        return this._lotteryNames;
+    get raffleNames(): Array<string> {
+        return this._raffleNames;
     }
 
-    set lotteryNames(value: Array<string>) {
-      this._lotteryNames = value;
+    set raffleNames(value: Array<string>) {
+      this._raffleNames = value;
     }
 
     public setNames(file: Blob): Promise<void> {
         const reader = new FileReader();
         return new Promise((resolve => {
           reader.onload = () => {
-            this._lotteryNames = this.getArrayFromText(reader.result as string);
+            this._raffleNames = this.getArrayFromText(reader.result as string);
             resolve();
           };
           reader.readAsText(file);

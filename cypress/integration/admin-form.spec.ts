@@ -22,7 +22,7 @@ describe('Admin form', () => {
     const newText = 'Yalla';
     AdminFormPage.fillInput(AdminFormSelector.ButtonText, newText);
     AdminFormPage.saveAdminForm();
-    cy.get(RafflePageSelector.StartLotteryBtn).contains(newText);
+    cy.get(RafflePageSelector.StartRaffleBtn).contains(newText);
   });
 
   it('should change background color', () => {
@@ -32,6 +32,6 @@ describe('Admin form', () => {
       .trigger('input')
       .should('have.value', newColor);
     AdminFormPage.saveAdminForm();
-    cy.get(RafflePageSelector.LotteryBackground).should('have.css', 'background-color', 'rgb(84, 20, 42)');
+    cy.get(RafflePageSelector.raffleBackground).should('have.css', 'background-color', 'rgb(84, 20, 42)');
   });
 });

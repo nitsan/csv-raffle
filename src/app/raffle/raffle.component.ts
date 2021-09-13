@@ -5,7 +5,7 @@ import { RaffleService } from '../services/raffle.service';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-lottery',
+  selector: 'app-raffle',
   templateUrl: './raffle.component.html',
   styleUrls: ['./raffle.component.scss']
 })
@@ -17,7 +17,7 @@ export class RaffleComponent {
   constructor(private title: Title, private raffleService: RaffleService) {
     this.title.setTitle('Raffle!');
     this.formData = SessionStorageService.getItem(SessionStorageKeys.AdminForm);
-    this.names = this.raffleService.lotteryNames;
+    this.names = this.raffleService.raffleNames;
   }
 
   get logoUrl(): string {

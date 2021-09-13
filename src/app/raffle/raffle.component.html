@@ -1,6 +1,6 @@
-<div class="background" [ngStyle]="{'background-color': formData?.backgroundColor}" data-test="lottery-background">
+<div class="background" [ngStyle]="{'background-color': formData?.backgroundColor}" data-test="raffle-background">
     <a routerLink="/admin"><img class="logo" [src]="logoUrl" alt="logo" data-test="image-logo"></a>
     <div class="winner-text">And the winner is...</div>
     <div class="winner-name">{{winnerName}}</div>
-    <button class="btn btn-primary" (click)="random()" data-test="start-lottery-btn">{{formData?.buttonText}}</button>
+    <button class="btn btn-primary" (click)="random()" data-test="start-raffle-btn">{{formData?.buttonText}}</button>
 </div>
