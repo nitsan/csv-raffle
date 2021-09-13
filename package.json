@@ -1,9 +1,9 @@
 {
-  "name": "lottery",
+  "name": "csv-raffle",
   "version": "1.0.12",
   "scripts": {
     "start": "ng serve",
-    "server:bg": "lite-server --baseDir='dist/lottery' -c server-lite.config.json > http.log 2>&1 &",
+    "server:bg": "lite-server --baseDir='dist/raffle' -c server-lite.config.json > http.log 2>&1 &",
     "build": "ng build --configuration production",
     "build:pages": "ng build --configuration production --output-path docs --base-href /csv-raffle/",
     "cypress:open": "npx cypress open",
