@@ -6,6 +6,8 @@ import { AdminForm } from '../models/admin.form.model';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
+const demoNames = ['ter Stegen', 'Gerard Pique', 'Ronald Araujo', 'Sergio Busquets', 'Jordi Alba', 'Pedri', 'de Jong', 'Memphis Depay'];
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -33,16 +35,24 @@ export class AdminComponent {
     this.isSaveLoading = true;
     this.file = target.files.item(0);
     await this.raffleService.setNames(this.file as Blob);
-    const raffleNames = this.raffleService.raffleNames;
-    this.totalNames = raffleNames.length - 1;
-    SessionStorageService.setItem(SessionStorageKeys.AllNames, raffleNames);
-    this.isSaveLoading = false;
+    this.setNames();
+  }
+
+  public addDemoNames() {
+    this.raffleService.raffleNames = demoNames;
+    this.setNames();
   }
 
   public onSubmit() {
     console.log(this.adminForm.value);
     SessionStorageService.setItem(SessionStorageKeys.AdminForm, this.adminForm.value);
     this.router.navigate(['/']);
+  }
+
+  private setNames() {
+    this.totalNames = this.raffleService.raffleNames.length - 1;
+    SessionStorageService.setItem(SessionStorageKeys.AllNames, this.raffleService.raffleNames);
+    this.isSaveLoading = false;
   }
 
   private initRaffleNames(): void {

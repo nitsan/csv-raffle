@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { Injectable } from '@angular/core';
+import { SessionStorageKeys, SessionStorageService } from './session-storage.service';
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +14,7 @@ export class RaffleService {
 
     set raffleNames(value: Array<string>) {
       this._raffleNames = value;
+      SessionStorageService.setItem(SessionStorageKeys.AllNames, this._raffleNames);
     }
 
     public setNames(file: Blob): Promise<void> {
