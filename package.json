@@ -2,9 +2,9 @@
   "name": "csv-raffle",
   "version": "1.0.18",
   "scripts": {
-    "start": "ng serve",
+    "serve": "ng serve",
     "server:bg": "lite-server --baseDir='dist/raffle' -c server-lite.config.json > http.log 2>&1 &",
-    "start:server": "node dist/app.js",
+    "start": "node dist/app.js",
     "build": "ng build --configuration production",
     "build:server": "tsc -p server/tsconfig.json",
     "build:pages": "ng build --configuration production --output-path docs --base-href /csv-raffle/",
@@ -13,7 +13,9 @@
     "test": "ng test --browsers=ChromeHeadless --watch=false",
     "test:watch": "ng test",
     "lint": "ng lint",
-    "deploy": "npm run build:pages && git add -A && git commit -m \"Deploy version\" && npm version patch && git push origin master"
+    "deploy": "npm run build:pages && git add -A && git commit -m \"Deploy version\" && npm version patch && git push origin master",
+    "build:docker": "docker build -t csv-raffle .",
+    "run:docker": "docker run --rm -p 3000:80 --name csv-raffle csv-raffle"
   },
   "private": true,
   "dependencies": {
