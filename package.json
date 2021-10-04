@@ -5,6 +5,7 @@
     "serve": "ng serve",
     "server:bg": "lite-server --baseDir='dist/raffle' -c server-lite.config.json > http.log 2>&1 &",
     "start": "node dist/app.js",
+    "start:watch": "npm run build:server -- -w & nodemon dist/app.js",
     "build": "ng build --configuration production",
     "build:server": "tsc -p server/tsconfig.json",
     "build:pages": "ng build --configuration production --output-path docs --base-href /csv-raffle/",
@@ -28,6 +29,7 @@
     "@angular/platform-browser-dynamic": "~12.2.8",
     "@angular/router": "~12.2.8",
     "express": "^4.17.1",
+    "morgan": "^1.10.0",
     "rxjs": "~6.6.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -62,6 +64,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.7.0",
     "lite-server": "^2.6.1",
+    "nodemon": "^2.0.13",
     "ts-node": "~10.1.0",
     "typescript": "~4.2.4"
   }
