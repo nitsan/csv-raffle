@@ -1,4 +1,4 @@
-FROM node:lts-alpine
+FROM node:lts-alpine as builder
 
 WORKDIR /app
 
@@ -13,6 +13,14 @@ RUN npm run build:server
 RUN npm run build
 
 RUN npm prune --production
+
+FROM node:lts-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY package.json ./
 
 EXPOSE 3000
 
