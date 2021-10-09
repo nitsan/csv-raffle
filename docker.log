@@ -1,0 +1,22 @@
+> docker build -t csv-raffle:v3 .
+
+[+] Building 199.7s (13/13) FINISHED
+ => [internal] load build definition from Dockerfile                                                                                                                                                                              0.0s
+ => => transferring dockerfile: 246B                                                                                                                                                                                              0.0s
+ => [internal] load .dockerignore                                                                                                                                                                                                 0.0s
+ => => transferring context: 84B                                                                                                                                                                                                  0.0s
+ => [internal] load metadata for docker.io/library/node:lts-alpine                                                                                                                                                                3.6s
+ => [auth] library/node:pull token for registry-1.docker.io                                                                                                                                                                       0.0s
+ => [1/7] FROM docker.io/library/node:lts-alpine@sha256:6e52e0b3bedfb494496488514d18bee7fd503fd4e44289ea012ad02f8f41a312                                                                                                          0.0s
+ => [internal] load build context                                                                                                                                                                                                 2.8s
+ => => transferring context: 710.71kB                                                                                                                                                                                             2.8s
+ => CACHED [2/7] WORKDIR /app                                                                                                                                                                                                     0.0s
+ => [3/7] COPY package*.json /app                                                                                                                                                                                                 0.2s
+ => [4/7] RUN npm ci --prefer-offline --no-audit                                                                                                                                                                                 80.9s
+ => [5/7] COPY . /app                                                                                                                                                                                                             0.1s
+ => [6/7] RUN npm run build:server                                                                                                                                                                                                5.3s
+ => [7/7] RUN npm run build                                                                                                                                                                                                      58.0s
+ => exporting to image                                                                                                                                                                                                           48.6s
+ => => exporting layers                                                                                                                                                                                                          48.6s
+ => => writing image sha256:93dc8202437b96d0fe279e57110653b222b07b95ea80711a643bcb84bbc9282e                                                                                                                                      0.0s
+ => => naming to docker.io/library/csv-raffle:v3                                                                                                                                                                                  0.0s
