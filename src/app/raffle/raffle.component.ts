@@ -21,7 +21,7 @@ export class RaffleComponent {
   }
 
   get logoUrl(): string {
-    return this.formData?.logoUrl || 'assets/angular-il.jpeg';
+    return this.formData?.logoUrl || 'assets/raffle-logo.png';
   }
 
   random() {

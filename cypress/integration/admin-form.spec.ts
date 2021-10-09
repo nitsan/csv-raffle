@@ -12,7 +12,7 @@ describe('Admin form', () => {
   });
 
   it('should change icon', () => {
-    const logoUrl = 'assets/favicon.png';
+    const logoUrl = 'assets/raffle-logo.png';
     AdminFormPage.fillInput(AdminFormSelector.IconUrlInput, logoUrl);
     AdminFormPage.saveAdminForm();
     cy.get(RafflePageSelector.ImageLogo).should('have.attr', 'src', logoUrl);
