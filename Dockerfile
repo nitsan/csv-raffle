@@ -16,11 +16,13 @@ RUN npm prune --production
 
 FROM node:lts-alpine
 
+USER node
+
 WORKDIR /app
 
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/node_modules ./node_modules
-COPY package.json ./
+COPY --chown=node:node --from=builder /app/dist ./dist
+COPY --chown=node:node --from=builder /app/node_modules ./node_modules
+COPY --chown=node:node package.json ./
 
 EXPOSE 3000
 
