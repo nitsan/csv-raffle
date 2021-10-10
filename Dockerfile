@@ -16,6 +16,8 @@ RUN npm prune --production
 
 FROM node:lts-alpine
 
+RUN apk add dumb-init
+
 USER node
 
 WORKDIR /app
@@ -26,4 +28,4 @@ COPY --chown=node:node package.json ./
 
 EXPOSE 3000
 
-ENTRYPOINT [ "npm", "start" ]
+ENTRYPOINT [ "dumb-init", "npm", "start" ]
