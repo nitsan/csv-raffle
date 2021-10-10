@@ -1,22 +1,22 @@
 > docker build -t csv-raffle:v1 .
 
-[+] Building 213.3s (12/12) FINISHED
+[+] Building 222.2s (13/13) FINISHED
  => [internal] load build definition from Dockerfile                                                                                                                                                                              0.0s
  => => transferring dockerfile: 217B                                                                                                                                                                                              0.0s
  => [internal] load .dockerignore                                                                                                                                                                                                 0.0s
  => => transferring context: 2B                                                                                                                                                                                                   0.0s
- => [internal] load metadata for docker.io/library/node:lts-alpine                                                                                                                                                                0.9s
- => [internal] load build context                                                                                                                                                                                                 3.2s
- => => transferring context: 5.68MB                                                                                                                                                                                               3.1s
+ => [internal] load metadata for docker.io/library/node:lts-alpine                                                                                                                                                                2.4s
+ => [auth] library/node:pull token for registry-1.docker.io                                                                                                                                                                       0.0s
+ => [internal] load build context                                                                                                                                                                                                16.6s
+ => => transferring context: 477.73MB                                                                                                                                                                                            16.5s
  => [1/7] FROM docker.io/library/node:lts-alpine@sha256:6e52e0b3bedfb494496488514d18bee7fd503fd4e44289ea012ad02f8f41a312                                                                                                          0.0s
  => CACHED [2/7] WORKDIR /app                                                                                                                                                                                                     0.0s
- => [3/7] COPY package*.json /app                                                                                                                                                                                                 0.4s
- => [4/7] RUN npm i                                                                                                                                                                                                              78.7s
- => [5/7] COPY . /app                                                                                                                                                                                                            15.4s
- => [6/7] RUN npm run build:server                                                                                                                                                                                                5.0s
- => [7/7] RUN npm run build                                                                                                                                                                                                      54.1s
- => exporting to image                                                                                                                                                                                                           55.2s
- => => exporting layers                                                                                                                                                                                                          55.1s
- => => writing image sha256:8e47517b7e63f875e280c03fcb1695eee867e5412a9c66e532983a8811a285d0                                                                                                                                      0.0s
+ => [3/7] COPY package*.json /app                                                                                                                                                                                                 0.7s
+ => [4/7] RUN npm i                                                                                                                                                                                                              78.3s
+ => [5/7] COPY . /app                                                                                                                                                                                                            16.9s
+ => [6/7] RUN npm run build:server                                                                                                                                                                                                4.9s
+ => [7/7] RUN npm run build                                                                                                                                                                                                      45.2s
+ => exporting to image                                                                                                                                                                                                           56.9s
+ => => exporting layers                                                                                                                                                                                                          56.8s
+ => => writing image sha256:5f1e0841532253c49f5c53bebd8ebbb840c7652cbd5e7fd313909a927c1779e4                                                                                                                                      0.0s
  => => naming to docker.io/library/csv-raffle:v1                                                                                                                                                                                  0.0s
-
