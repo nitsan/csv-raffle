@@ -1,0 +1,6 @@
+.git
+.github
+cypress
+docs
+dist
+node_modules
