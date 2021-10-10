@@ -15,8 +15,8 @@
     "test:watch": "ng test",
     "lint": "ng lint",
     "deploy": "npm run build:pages && git add -A && git commit -m \"Deploy version\" && npm version patch && git push origin master",
-    "build:docker": "docker build -t csv-raffle:v2 .",
-    "run:docker": "docker run --rm -p 80:3000 --name csv-raffle csv-raffle:v2"
+    "build:docker": "docker build -t csv-raffle:v3 .",
+    "run:docker": "docker run --rm -p 80:3000 --name csv-raffle csv-raffle:v3"
   },
   "private": true,
   "dependencies": {
