@@ -1,4 +1,8 @@
-FROM node:lts-alpine as builder
+FROM node:14-alpine as builder
+
+RUN apk add chromium
+
+ENV CHROME_BIN=/usr/bin/chromium-browser
 
 WORKDIR /app
 
@@ -8,15 +12,15 @@ RUN npm ci --prefer-offline --no-audit
 
 COPY . /app
 
+RUN npm run test
+
 RUN npm run build:server
 
 RUN npm run build
 
 RUN npm prune --production
 
-FROM node:lts-alpine
-
-RUN apk add dumb-init
+FROM node:14-alpine
 
 USER node
 
@@ -28,4 +32,4 @@ COPY --chown=node:node package.json ./
 
 EXPOSE 3000
 
-ENTRYPOINT [ "dumb-init", "npm", "start" ]
+ENTRYPOINT [ "npm", "start" ]

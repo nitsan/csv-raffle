@@ -1,24 +1,29 @@
-[+] Building 154.2s (17/17) FINISHED
- => [internal] load build definition from Dockerfile                                                                                                                                                                              0.0s
- => => transferring dockerfile: 433B                                                                                                                                                                                              0.0s
- => [internal] load .dockerignore                                                                                                                                                                                                 0.0s
- => => transferring context: 34B                                                                                                                                                                                                  0.0s
- => [internal] load metadata for docker.io/library/node:lts-alpine                                                                                                                                                                2.4s
- => [auth] library/node:pull token for registry-1.docker.io                                                                                                                                                                       0.0s
- => [internal] load build context                                                                                                                                                                                                 0.0s
- => => transferring context: 36.19kB                                                                                                                                                                                              0.0s
- => [builder 1/8] FROM docker.io/library/node:lts-alpine@sha256:6e52e0b3bedfb494496488514d18bee7fd503fd4e44289ea012ad02f8f41a312                                                                                                  0.0s
- => CACHED [builder 2/8] WORKDIR /app                                                                                                                                                                                             0.0s
- => [builder 3/8] COPY package*.json /app                                                                                                                                                                                         0.0s
- => [builder 4/8] RUN npm ci --prefer-offline --no-audit                                                                                                                                                                         61.2s
- => [builder 5/8] COPY . /app                                                                                                                                                                                                     0.1s
- => [builder 6/8] RUN npm run build:server                                                                                                                                                                                        4.7s
- => [builder 7/8] RUN npm run build                                                                                                                                                                                              59.4s
- => [builder 8/8] RUN npm prune --production                                                                                                                                                                                     19.7s
- => CACHED [stage-1 3/5] COPY --from=builder /app/dist ./dist                                                                                                                                                                     0.0s
- => [stage-1 4/5] COPY --from=builder /app/node_modules ./node_modules                                                                                                                                                            1.0s
- => [stage-1 5/5] COPY package.json ./                                                                                                                                                                                            0.0s
- => exporting to image                                                                                                                                                                                                            1.4s
- => => exporting layers                                                                                                                                                                                                           1.4s
- => => writing image sha256:f43ed0bd8b95f3b67c3c048661b8c85989a86f6263f417a07e48694629489b7e                                                                                                                                      0.0s
- => => naming to docker.io/library/csv-raffle:v4                                                                                                                                                                                  0.0s
+> docker build -t csv-raffle:v6 . --no-cache
+
+[+] Building 187.0s (19/19) FINISHED
+ => [internal] load build definition from Dockerfile0.0s
+ => => transferring dockerfile: 37B                                                                                                         0.0s
+ => [internal] load .dockerignore                                                                                                           0.0s
+ => => transferring context: 34B                                                                                                            0.0s
+ => [internal] load metadata for docker.io/library/node:14-alpine                                                                           0.9s
+ => CACHED [builder  1/10] FROM docker.io/library/node:14-alpine@sha256:dc92f36e7cd917816fa2df041d4e9081453366381a00f40398d99e9392e78664    0.0s
+ => CACHED [stage-1 2/5] WORKDIR /app                                                                                                       0.0s
+ => [internal] load build context                                                                                                           0.0s
+ => => transferring context: 8.06kB                                                                                                         0.0s
+ => [builder  2/10] RUN apk add chromium                                                                                                    17.2s
+ => [builder  3/10] WORKDIR /app                                                                                                            0.0s
+ => [builder  4/10] COPY package*.json /app                                                                                                 0.0s
+ => [builder  5/10] RUN npm ci --prefer-offline --no-audit                                                                                  60.5s
+ => [builder  6/10] COPY . /app                                                                                                             0.1s
+ => [builder  7/10] RUN npm run test                                                                                                        34.0s
+ => [builder  8/10] RUN npm run build:server                                                                                                5.4s
+ => [builder  9/10] RUN npm run build                                                                                                       43.3s
+ => [builder 10/10] RUN npm prune --production                                                                                              19.7s
+ => [stage-1 3/5] COPY --chown=node:node --from=builder /app/dist ./dist                                                                    0.0s
+ => [stage-1 4/5] COPY --chown=node:node --from=builder /app/node_modules ./node_modules                                                    1.2s
+ => [stage-1 5/5] COPY --chown=node:node package.json ./                                                                                    0.0s
+ => exporting to image                                                                                                                      1.3s
+ => => exporting layers                                                                                                                     1.3s
+ => => writing image sha256:a3c4c260cd34c396d2a437cfa0615944f74f7c020fca193599211bd2f4023151                                                0.0s
+ => => naming to docker.io/library/csv-raffle:v6                                                                                            0.0s
+
