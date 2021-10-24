@@ -1,21 +1,23 @@
-> docker build -t csv-raffle:v2 .
+> docker build -t csv-raffle:v2 . --no-cache
 
-[+] Building 173.5s (12/12) FINISHED
- => [internal] load build definition from Dockerfile                                                                                                                                                                              0.0s
- => => transferring dockerfile: 37B                                                                                                                                                                                               0.0s
- => [internal] load .dockerignore                                                                                                                                                                                                 0.0s
- => => transferring context: 34B                                                                                                                                                                                                  0.0s
- => [internal] load metadata for docker.io/library/node:lts-alpine                                                                                                                                                                0.8s
- => [1/7] FROM docker.io/library/node:lts-alpine@sha256:6e52e0b3bedfb494496488514d18bee7fd503fd4e44289ea012ad02f8f41a312                                                                                                          0.0s
- => [internal] load build context                                                                                                                                                                                                 0.0s
- => => transferring context: 7.92kB                                                                                                                                                                                               0.0s
- => CACHED [2/7] WORKDIR /app                                                                                                                                                                                                     0.0s
- => [3/7] COPY package*.json /app                                                                                                                                                                                                 0.0s
- => [4/7] RUN npm ci --prefer-offline --no-audit                                                                                                                                                                                 59.6s
- => [5/7] COPY . /app                                                                                                                                                                                                             2.7s
- => [6/7] RUN npm run build:server                                                                                                                                                                                                8.4s
- => [7/7] RUN npm run build                                                                                                                                                                                                      60.2s
- => exporting to image                                                                                                                                                                                                           41.6s
- => => exporting layers                                                                                                                                                                                                          41.6s
- => => writing image sha256:7fea3943bff04c03a1852f3dccb629fd3a2e1b1d70b3086865d60dd8e9b7bda7                                                                                                                                      0.0s
- => => naming to docker.io/library/csv-raffle:v2                                                                                                                                                                                  0.0s
+[+] Building 168.0s (13/13) FINISHED
+ => [internal] load build definition from Dockerfile                                                                     0.0s
+ => => transferring dockerfile: 245B                                                                                     0.0s
+ => [internal] load .dockerignore                                                                                        0.0s
+ => => transferring context: 84B                                                                                         0.0s
+ => [internal] load metadata for docker.io/library/node:14-alpine                                                        2.1s
+ => [auth] library/node:pull token for registry-1.docker.io                                                              0.0s
+ => [internal] load build context                                                                                        3.2s
+ => => transferring context: 35.90kB                                                                                     3.1s
+ => [1/7] FROM docker.io/library/node:14-alpine@sha256:dc92f36e7cd917816fa2df041d4e9081453366381a00f40398d99e9392e78664  0.0s
+ => CACHED [2/7] WORKDIR /app                                                                                            0.0s
+ => [3/7] COPY package*.json /app                                                                                        0.1s
+ => [4/7] RUN npm ci --prefer-offline --no-audit                                                                        64.8s
+ => [5/7] COPY . /app                                                                                                    0.1s
+ => [6/7] RUN npm run build:server                                                                                       5.3s
+ => [7/7] RUN npm run build                                                                                             51.7s
+ => exporting to image                                                                                                  40.5s
+ => => exporting layers                                                                                                 40.5s
+ => => writing image sha256:cfdaa248fd449c917c2ecdb7f9cac4950626eb8f1c12cb7dc3dc72f710741ecf                             0.0s
+ => => naming to docker.io/library/csv-raffle:v2                                                                         0.0s
+
