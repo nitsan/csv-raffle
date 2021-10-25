@@ -1,5 +1,9 @@
 FROM node:14-alpine as builder
 
+RUN apk add chromium
+
+ENV CHROME_BIN=/usr/bin/chromium-browser
+
 WORKDIR /app
 
 COPY package*.json /app
@@ -13,6 +17,8 @@ RUN npm run build:server
 COPY /src /app/src
 
 COPY ["angular.json", "tsconfig.json", "/app/"]
+
+RUN npm run test
 
 RUN npm run build
 
