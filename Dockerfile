@@ -6,9 +6,13 @@ COPY package*.json /app
 
 RUN npm ci --prefer-offline --no-audit
 
-COPY . /app
+COPY /server /app/server
 
 RUN npm run build:server
+
+COPY /src /app/src
+
+COPY ["angular.json", "tsconfig.json", "/app/"]
 
 RUN npm run build
 
@@ -16,13 +20,11 @@ RUN npm prune --production
 
 FROM node:14-alpine
 
-USER node
-
 WORKDIR /app
 
-COPY --chown=node:node --from=builder /app/dist ./dist
-COPY --chown=node:node --from=builder /app/node_modules ./node_modules
-COPY --chown=node:node package.json ./
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY package.json ./
 
 EXPOSE 3000
 
