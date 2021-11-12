@@ -24,6 +24,9 @@ RUN npm run build
 
 RUN npm prune --production
 
+RUN rm -rf node_modules/@angular
+RUN rm -rf node_modules/esbuild-*
+
 FROM node:14-alpine
 
 USER node
