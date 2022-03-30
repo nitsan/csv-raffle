@@ -1,5 +1,11 @@
 name: Cypress tests
-on: [pull_request]
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+      - requested
+
 jobs:
   cypress-run:
     name: Cypress run
