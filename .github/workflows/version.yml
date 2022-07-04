@@ -1,0 +1,24 @@
+name: Version
+
+on: pull_request
+
+jobs:
+  echo:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: 'get version'
+        run: |
+          echo APP_VERSION=$(git log -1 --pretty=%B) >> $APP_VERSION2
+
+      - name: 'echo version'
+        run: |
+          echo "the version is: ${APP_VERSION}"
+
+      - name: 'echo version2'
+        run: |
+          echo "the version is: ${APP_VERSION2}"
