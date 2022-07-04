@@ -14,9 +14,4 @@ jobs:
       - name: "echo version"
         run: echo "The version is $Version"
         env:
-          Version: 1.0
-
-      - name: "Say Hello Mona it's Monday"
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
-        env:
-          First_Name: Mona
+          Version: $(npm version | grep 'csv' | awk -F\' '{print $4}')
