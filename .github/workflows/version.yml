@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: "set version"
-        run: echo "NPM_VERSION=$(cat package.json | jq -r '.version')" >> $VERSION2
+        run: echo "NPM_VERSION=$(cat package.json | jq -r '.version')"
 
       - name: "echo version"
         run: echo "The version is $NPM_VERSION"
