@@ -13,10 +13,10 @@ jobs:
 
       - name: "echo version"
         run: echo "The version is $VERSION"
-        env:
-          VERSION: ${{ npm version | grep 'csv' | awk -F\' '{print $4}' }}
+#        env:
+#          VERSION: ${{ npm version | grep 'csv' | awk -F\' '{print $4}' }}
 
       - name: "echo version2"
         run: echo "The version is $VERSION"
         env:
-          VERSION: "$(cat package.json | jq -r '.version' )"
+          VERSION: ${{ (cat package.json | jq -r '.version' ) }}
