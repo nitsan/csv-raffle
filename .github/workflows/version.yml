@@ -11,14 +11,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: 'get version'
-        run: |
-          echo APP_VERSION=$(git log -1 --pretty=%B)
+      - name: "echo version"
+        run: echo "The version is $Version"
+        env:
+          Version: 1.0
 
-      - name: 'echo version'
-        run: |
-          echo "the version is: ${APP_VERSION}"
-
-      - name: 'echo version2'
-        run: |
-          echo "the version is: ${APP_VERSION2}"
+      - name: "Say Hello Mona it's Monday"
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona
