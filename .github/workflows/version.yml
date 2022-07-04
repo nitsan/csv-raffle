@@ -11,7 +11,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: "echo version"
-        run: echo "The version is $VERSION"
-        env:
-          VERSION: ${{ echo "npm version | grep 'csv' | awk -F\' '{print $4}'" }}
+      - name: Get version
+        id: vars
+        run: echo ::set-output name=version::$(cat package.json | jq -r '.version')
+      - name: Test output
+        run: echo ${{ steps.vars.outputs.version }}
