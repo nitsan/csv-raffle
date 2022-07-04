@@ -12,6 +12,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: "echo version"
-        run: echo "The version is $Version"
+        run: echo "The version is $VERSION"
         env:
-          Version: $(npm version | grep 'csv' | awk -F\' '{print $4}')
+          VERSION: npm version | grep 'csv' | awk -F\' '{print $4}'
+
+      - name: "echo version2"
+        run: echo "The version is $VERSION"
+        env:
+          VERSION: cat package.json | jq -r '.version'
