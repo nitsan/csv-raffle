@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   echo:
-    name: Lint
+    name: Get
     runs-on: ubuntu-latest
 
     steps:
@@ -13,7 +13,7 @@ jobs:
 
       - name: 'get version'
         run: |
-          echo APP_VERSION=$(git log -1 --pretty=%B) >> $APP_VERSION2
+          echo APP_VERSION=$(git log -1 --pretty=%B)
 
       - name: 'echo version'
         run: |
