@@ -1,6 +1,6 @@
 {
   "name": "csv-raffle",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "scripts": {
     "serve": "ng serve",
     "server:bg": "lite-server --baseDir='dist/raffle' -c server-lite.config.json > http.log 2>&1 &",
