@@ -1,6 +1,6 @@
 name: Cypress tests
 on:
-  pull_request_target:
+  pull_request:
     types: [auto_merge_enabled]
 jobs:
   cypress-run:
