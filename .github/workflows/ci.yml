@@ -9,9 +9,9 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: npm intsall
+      - name: npm install
         run: npm ci --prefer-offline --no-audit
 
       - name: lint
@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: npm intsall
         run: npm ci --prefer-offline --no-audit
