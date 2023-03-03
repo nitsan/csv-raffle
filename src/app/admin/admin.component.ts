@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { SessionStorageKeys, SessionStorageService } from '../services/session-storage.service';
 import { RaffleService } from '../services/raffle.service';
 import { AdminForm } from '../models/admin.form.model';
@@ -14,12 +14,12 @@ const demoNames = ['ter Stegen', 'Gerard Pique', 'Ronald Araujo', 'Sergio Busque
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent {
-  public adminForm: FormGroup;
+  public adminForm: UntypedFormGroup;
   public file: File | null = null;
   public isSaveLoading = false;
   public totalNames = 0;
 
-  constructor(private fb: FormBuilder, private router: Router, private title: Title, private raffleService: RaffleService) {
+  constructor(private fb: UntypedFormBuilder, private router: Router, private title: Title, private raffleService: RaffleService) {
     this.title.setTitle('Admin Raffle');
     this.initRaffleNames();
     const adminFormData: AdminForm = SessionStorageService.getItem(SessionStorageKeys.AdminForm) || {};
