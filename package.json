@@ -3,7 +3,7 @@
   "version": "1.0.26",
   "scripts": {
     "serve": "ng serve",
-    "server:bg": "cd dist/raffle && angular-http-server > http.log 2>&1 &",
+    "server:bg": "cd dist/raffle && angular-http-server -p 4200 > http.log 2>&1 &",
     "start": "node dist/app.js",
     "start:watch": "npm run build:server -- -w & nodemon dist/app.js",
     "build": "ng build --configuration production",
