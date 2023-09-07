@@ -44,6 +44,8 @@
     "@angular/cli": "^15.2.1",
     "@angular/compiler-cli": "^15.2.1",
     "@angular/language-service": "^15.2.1",
+    "@percy/cli": "^1.27.1",
+    "@percy/cypress": "^3.1.2",
     "@types/express": "^4.17.15",
     "@types/jasmine": "~3.10.2",
     "@types/jasminewd2": "~2.0.10",
