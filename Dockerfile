@@ -1,4 +1,4 @@
-FROM node:14-alpine as builder
+FROM node:14.21.0-alpine as builder
 
 RUN apk add chromium
 
@@ -27,7 +27,7 @@ RUN npm prune --production
 RUN rm -rf node_modules/@angular
 RUN rm -rf node_modules/esbuild-*
 
-FROM node:14-alpine
+FROM node:14.21.0-alpine
 
 USER node
 
